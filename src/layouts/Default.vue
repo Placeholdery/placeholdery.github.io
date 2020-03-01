@@ -49,6 +49,7 @@ body {
   flex: 5;
   background: #fff;
   padding: 45px;
+  width: 100%;
   border-radius: 4px;
   overflow-y: auto;
 }
