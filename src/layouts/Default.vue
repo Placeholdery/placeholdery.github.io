@@ -33,16 +33,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 960px;
-  max-height: 100vh;
   margin: 0 auto;
+  height: 100vh;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.content {
+.layout > * {
   flex: 1;
+}
+
+.content {
+  flex: 5;
   background: #fff;
   padding: 45px;
   border-radius: 4px;
