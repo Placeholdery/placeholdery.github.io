@@ -4,3 +4,11 @@
     <p>Will be updated later</p>
   </Layout>
 </template>
+
+<script>
+export default {
+  metaInfo: {
+    title: "Privacy"
+  }
+};
+</script>
