@@ -7,7 +7,9 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "downloadjs": "^1.4.7",
     "gridsome": "^0.7.0",
+    "html-to-image": "^0.1.1",
     "vue-feather-icons": "^5.0.0"
   }
 }
