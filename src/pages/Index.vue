@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div v-if="!Object.keys(files).length" class="uploader">
+    <div v-if="!Object.keys(files).length && !Object.keys(previewSize).length" class="uploader">
       <div>
         <image-icon size="10x" />
       </div>
@@ -12,17 +12,21 @@
       </div>
     </div>
     <div v-else class="upload-action">
-      <ul>
+      <ul class="list" style="list-style: none; margin: 0;">
         <li v-for="file in files" :key="file.name">
-          <div>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
             <div>
-              <img style="height: 100px;" :src="file.image" alt="file.name" />
+              <img @load="loadImage" style="width: 250px;" :src="file.image" alt="file.name" />
             </div>
             <p>{{file.name}}</p>
             <ul v-if="file.dimensions">
               <li>Width: {{ file.dimensions.width }}</li>
               <li>Height: {{ file.dimensions.height }}</li>
             </ul>
+            <div
+              class="image-placeholder"
+              :style="{ width: previewSize.width + 'px', height: previewSize.height + 'px', fontSize: previewSize.width/10 + 'px' }"
+            >{{ file.dimensions.width }} x {{ file.dimensions.height }}</div>
           </div>
         </li>
       </ul>
@@ -45,13 +49,23 @@ export default {
   },
   data: () => {
     return {
-      files: {}
+      files: {},
+      previewSize: {}
     };
   },
   methods: {
     upload: function() {
       const fileInput = this.$refs["fileinput"];
       fileInput.click();
+    },
+    loadImage: function(e) {
+      const {
+        target: { offsetHeight, offsetWidth }
+      } = e;
+      this.previewSize = {
+        height: offsetHeight,
+        width: offsetWidth
+      };
     },
     fileUpload: function(e) {
       const {
@@ -110,5 +124,22 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.image-placeholder {
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: rgba(38, 50, 56, 0.5);
+}
+
+.list li {
+  margin-bottom: 15px;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
 }
 </style>
