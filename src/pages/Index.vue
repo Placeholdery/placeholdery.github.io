@@ -1,5 +1,10 @@
 <template>
   <Layout>
+    <div class="action-bar">
+      <ul>
+        <li>Action1</li>
+      </ul>
+    </div>
     <div v-if="!Object.keys(files).length && !Object.keys(previewSize).length" class="uploader">
       <div>
         <image-icon size="10x" />
@@ -124,6 +129,21 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.upload-action {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.action-bar {
+  position: absolute;
+  background: #fff;
+  width: calc(100% - 90px);
+  top: 0;
+  left: 0;
+  padding: 15px 45px;
+  box-shadow: 0 -15px 20px 10px #000;
 }
 
 .image-placeholder {

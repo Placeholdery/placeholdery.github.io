@@ -46,11 +46,12 @@ body {
 }
 
 .content {
+  position: relative;
   flex: 5;
+  padding-top: 55px;
   background: #fff;
-  padding: 45px;
   width: 100%;
   border-radius: 4px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 </style>
