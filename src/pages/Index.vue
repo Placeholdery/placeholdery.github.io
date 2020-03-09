@@ -1,8 +1,19 @@
 <template>
   <Layout>
-    <div class="action-bar">
-      <ul>
-        <li>Action1</li>
+    <div v-show="Object.keys(files).length" class="action-bar">
+      <ul style="display: flex; align-items: center; justify-content: space-between;">
+        <li>Select</li>
+        <li>Colors</li>
+        <li>Height*Width</li>
+        <li>
+          <Edit3Icon />
+        </li>
+        <li>
+          <TypeIcon />
+        </li>
+        <li>
+          <Trash2Icon />
+        </li>
       </ul>
     </div>
     <div v-if="!Object.keys(files).length && !Object.keys(previewSize).length" class="uploader">
@@ -23,15 +34,33 @@
             <div>
               <img @load="loadImage" style="width: 250px;" :src="file.image" alt="file.name" />
             </div>
-            <p>{{file.name}}</p>
-            <ul v-if="file.dimensions">
-              <li>Width: {{ file.dimensions.width }}</li>
-              <li>Height: {{ file.dimensions.height }}</li>
-            </ul>
+            <div>
+              <p>
+                <ImageIcon />
+                {{ file.name }}
+              </p>
+              <p>
+                <FileTextIcon />
+                {{ file.type }}
+              </p>
+            </div>
+            <div>
+              <p>
+                <Edit3Icon />
+                {{ previewSize.width/10 + 'px' }}
+              </p>
+              <p>
+                <TypeIcon />Arial
+              </p>
+            </div>
+            <p>Colors</p>
             <div
               class="image-placeholder"
               :style="{ width: previewSize.width + 'px', height: previewSize.height + 'px', fontSize: previewSize.width/10 + 'px' }"
             >{{ file.dimensions.width }} x {{ file.dimensions.height }}</div>
+            <div>
+              <TrashIcon />
+            </div>
           </div>
         </li>
       </ul>
@@ -46,7 +75,14 @@
 </style>
 
 <script>
-import { ImageIcon } from "vue-feather-icons";
+import {
+  ImageIcon,
+  Trash2Icon,
+  TrashIcon,
+  FileTextIcon,
+  Edit3Icon,
+  TypeIcon
+} from "vue-feather-icons";
 
 export default {
   metaInfo: {
@@ -116,7 +152,12 @@ export default {
     }
   },
   components: {
-    ImageIcon
+    ImageIcon,
+    Trash2Icon,
+    TrashIcon,
+    FileTextIcon,
+    Edit3Icon,
+    TypeIcon
   }
 };
 </script>
@@ -132,6 +173,7 @@ export default {
 }
 
 .upload-action {
+  padding: 0 25px;
   height: 100%;
   overflow-y: scroll;
 }
@@ -139,11 +181,15 @@ export default {
 .action-bar {
   position: absolute;
   background: #fff;
-  width: calc(100% - 90px);
+  width: calc(100% - 50px);
   top: 0;
   left: 0;
-  padding: 15px 45px;
+  padding: 15px 25px;
   box-shadow: 0 -15px 20px 10px #000;
+}
+
+.action-bar ul {
+  list-style: none;
 }
 
 .image-placeholder {
