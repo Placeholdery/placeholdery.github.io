@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{184:function(t,e,n){"use strict";n.r(e);var a={metaInfo:{title:"Privacy"}},i=n(20),l=Object(i.a)(a,(function(){var t=this.$createElement,e=this._self._c||t;return e("Layout",[e("h1",[this._v("Privacy")]),e("p",[this._v("Will be updated later")])])}),[],!1,null,null,null);e.default=l.exports}}]);
