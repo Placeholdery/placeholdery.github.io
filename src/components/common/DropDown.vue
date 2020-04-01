@@ -1,5 +1,5 @@
 <template>
-  <p>Button</p>
+  <p>Dropdown</p>
 </template>
 
 <style>

@@ -1,5 +1,5 @@
 <template>
-  <p>Button</p>
+  <p>IconButton</p>
 </template>
 
 <style>

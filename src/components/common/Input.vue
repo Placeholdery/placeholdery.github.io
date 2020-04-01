@@ -1,5 +1,5 @@
 <template>
-  <p>Button</p>
+  <p>Input</p>
 </template>
 
 <style>
